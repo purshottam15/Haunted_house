@@ -25,8 +25,8 @@ function loadSound(name, url) {
 
 // Load sounds
 const audioUrls = {
-  gateSound: 'gate_sound.mp3',
-  houseSound: 'house_sound.mp3',
+  gateSound: 'gate_sound.mp3'
+
   // Add more sound URLs here
 };
 
@@ -115,17 +115,20 @@ const house = new THREE.Group()
 scene.add(house)
 
 
+
+
 // walls 
+const wall_material=new THREE.MeshStandardMaterial({map:wall_texture})
 const wall = new THREE.Mesh(
   new THREE.BoxGeometry(4, 2, 4),
-  new THREE.MeshStandardMaterial({ map: wall_texture })
+  wall_material
 )
 wall.position.y = 3.2
 house.add(wall)
 
 const wall1 = new THREE.Mesh(
   new THREE.BoxGeometry(5, 3, 5),
-  new THREE.MeshStandardMaterial({ map: wall_texture })
+  wall_material
 )
 wall1.position.y = 1
 house.add(wall1)
@@ -167,10 +170,7 @@ house.add(roof)
 // side_wall
 const side_wall = new THREE.Mesh(
   new THREE.PlaneGeometry(5, 3),
-  new THREE.MeshStandardMaterial({
-    map: side_wall_texture
-
-  })
+ wall_material
 )
 side_wall.rotation.y = Math.PI * 0.5
 side_wall.position.x = 2.511
@@ -179,42 +179,14 @@ scene.add(side_wall)
 
 
 
-// const side_wall2 = new THREE.Mesh(
-//   new THREE.PlaneGeometry(5, 3),
-//   new THREE.MeshStandardMaterial({ 
-//     map:side_wall_texture
-
-//    })
-// )
-// side_wall2.rotation.y=Math.PI+Math.PI*0.5
-// side_wall2.position.x=-2.511
-// side_wall2.position.y=1
-
-
-// const side_wall1 = new THREE.Mesh(
-//   new THREE.PlaneGeometry(5, 3),
-//   new THREE.MeshStandardMaterial({ 
-//     map:side_wall_texture
-
-//    })
-// )
-// side_wall1.rotation.y=Math.PI
-// side_wall1.position.z=-2.511
-// side_wall1.position.y=1
-
-
-
-// // side_wall4.rotation.y=
-
-// house.add(side_wall,side_wall1,side_wall2)
-
-
 
 
 // door 
+const door_material=new THREE.MeshStandardMaterial({ map: door_texture })
 const door = new THREE.Mesh(
   new THREE.PlaneGeometry(1.5, 1.5),
-  new THREE.MeshStandardMaterial({ map: door_texture })
+  door_material
+  
 )
 door.position.y = 0.75
 door.position.z = 2 + 0.01 + 0.5
@@ -222,7 +194,7 @@ house.add(door)
 
 const door_upper = new THREE.Mesh(
   new THREE.PlaneGeometry(1.5, 1.5),
-  new THREE.MeshStandardMaterial({ map: door_texture })
+  door_material
 )
 door_upper.position.y = 0.75 + 2.5
 door_upper.position.z = 2.001
