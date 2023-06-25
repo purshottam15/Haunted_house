@@ -48,6 +48,7 @@ for (const soundName in audioUrls) {
  */
 // Debug
 const gui = new dat.GUI()
+gui.close()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -359,12 +360,12 @@ scene.add(floor)
  * Lights
  */
 // Ambient light
-const ambientLight = new THREE.AmbientLight('#b9d5ff', 0.1)
+const ambientLight = new THREE.AmbientLight('#b9d5ff', 0.134)
 gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001)
 scene.add(ambientLight)
 
 // Directional light
-const moonLight = new THREE.DirectionalLight('#b9d5ff', 0.2)
+const moonLight = new THREE.DirectionalLight('#b9d5ff', 0.211)
 moonLight.position.set(4, 5, - 2)
 gui.add(moonLight, 'intensity').min(0).max(1).step(0.001)
 gui.add(moonLight.position, 'x').min(- 5).max(5).step(0.001)
@@ -375,7 +376,7 @@ scene.add(moonLight)
 
 
 // Light on door 
-const doorLight = new THREE.PointLight('#ff7d46', 3, 7);
+const doorLight = new THREE.PointLight('#ff7d46', 4, 7);
 doorLight.position.set(0, 2, 2.2);
 scene.add(doorLight);
 
@@ -384,15 +385,15 @@ frontLight.position.set(0, 2, 2.8);
 scene.add(frontLight);
 
 // Light on floor 
-const floor_light = new THREE.PointLight('red', 4, 7);
-floor_light.position.set(0, 6, 0);
-// floor_light.lookAt.set(0,8,0)
+const floor_light = new THREE.PointLight('red',2,7);
+floor_light.position.set(0, 5, 2.5);
+// floor_light.lookAt(0,6,2)
 scene.add(floor_light);
 
-const floor_light1 = new THREE.PointLight('#ff7d46', 4, 7);
-floor_light1.position.set(0, 6, 2.5);
-floor_light.lookAt(2.3, 4.2, 3)
-scene.add(floor_light1);
+// const floor_light1 = new THREE.PointLight('#ff7d46', 4, 7);
+// floor_light1.position.set(0, 6, 2.5);
+// floor_light.lookAt(2.3, 4.2, 3)
+// scene.add(floor_light1);
 
 
 
@@ -432,7 +433,7 @@ scene.add(point)
 
 // text 
 const loader = new FontLoader();
-const text_material = new THREE.MeshBasicMaterial({ map: side_wall_texture })
+const text_material = new THREE.MeshStandardMaterial({ color:"white" })
 
 loader.load('/fonts/helvetiker_regular.typeface.json', function (font) {
 
